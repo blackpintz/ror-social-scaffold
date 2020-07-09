@@ -11,4 +11,12 @@ class User < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :friendships
   has_many :friends, through: :friendships
+  
+  def self.check_friend(id)
+    new_friend = User.find(id)
+    all_requests = []
+    all_requests << new_friend
+    all_requests
+  end
+  
 end

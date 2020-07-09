@@ -8,8 +8,9 @@
   </article>
   <section>
     <h3>Friend Requests:</h3>
-    <% @requests.each do |friend| %>
-    <%= friend.name %>
+    <% @friend_requests.each do |friend| %>
+    <p><%= friend.user.name %> wants to be your friend.</p>
+    
     <% end %>
   </section>
 </section>

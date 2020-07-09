@@ -6,9 +6,13 @@
         <span class="profile-link">
           <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
         </span>
+        <% unless @found_friends.include?(user) %>
         <span>
-          <%= link_to 'Add friend', user_path(user,user_id: current_user.id, friend_id: user.id), method: :get, class: 'frnd-btn' %>
+          <%= link_to 'Add friend', new_friendship_path(user_id: current_user.id, friend_id: user.id), method: :get, data: {disable_with: 'Pending'}, class: 'frnd-btn' %>
         </span>
+        <% else %>
+        <span>Your friendship request is pending!</span>
+        <% end %>
       </li>
     <% end %>
   </ul>

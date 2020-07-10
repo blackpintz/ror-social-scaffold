@@ -16,31 +16,25 @@ module ApplicationHelper
     end
   end
   
-  def sent_request(current)
-    requests = Friendship.where(user_id: current.id, status: false)
-    !!requests
-  end
-  
-  def received_request(user)
-    requests = Friendship.where(friend_id: user.id, status: false)
-    !!requests
+  def pending_requests(current, user)
+    requests = Friendship.where(user_id: current.id, friend_id: user.id)
+    !!requests.first 
   end
   
   def request_status(current,user)
-    (sent_request(current) && received_request(user)) || (sent_request(user) && received_request(current))
+    pending_requests(current,user) || pending_requests(user, current)
   end
   
-  def accepted_requests(id)
-    friend = Friendship.where(friend_id: id, status: true)
-    !!friend.first
-  end
-  
-  def my_friends(id)
-    friend = Friendship.where(user_id: id, status: true)
+  def accepted_requests(current,user)
+    friend = Friendship.where(user_id: current.id ,friend_id: user.id, status: true)
     !!friend.first
   end
   
   def check_friend_status(current, user)
-    (accepted_requests(current.id) && my_friends(user.id)) || (accepted_requests(user.id) && my_friends(current.id))
+    accepted_requests(current, user) || accepted_requests(user, current)
+  end
+  
+  def request_alert(current,user)
+    !check_friend_status(current, user) && request_status(current,user)
   end
 end

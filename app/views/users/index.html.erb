@@ -6,13 +6,13 @@
         <span class="profile-link">
           <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
         </span>
-        <% unless request_status(current_user,user) %>
+        <% unless request_status(current_user, user) %>
         <span>
           <%= link_to 'Add friend', friendships_path(user_id: current_user.id, friend_id: user.id), method: :post, data: {disable_with: 'Pending'}, class: 'frnd-btn' %>
         </span>
         <% end %>
         <span><%= "You are friends!" if check_friend_status(current_user, user) %></span>
-          <!--<span>"Your friend request is pending!</span>-->
+          <span><%= "Your friend request is pending!" if request_alert(current_user, user) %></span>
       </li>
     <% end %>
   </ul>

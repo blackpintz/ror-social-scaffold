@@ -8,7 +8,7 @@
         </span>
         <% unless pending_requests(current_user, user) || user.id == current_user.id %>
         <span>
-          <%= link_to 'Add friend', friendships_path(user_id: current_user.id, friend_id: user.id), method: :post, data: {disable_with: 'Pending'}, class: 'frnd-btn' %>
+          <%= link_to 'Add ' + user.name, friendships_path(user_id: current_user.id, friend_id: user.id), method: :post, data: {disable_with: 'Pending'}, class: 'frnd-btn' %>
         </span>
         <% end %>
         <span><%= "You are friends!" if accepted_requests(current_user, user) %></span>

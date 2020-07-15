@@ -30,11 +30,4 @@ RSpec.describe ApplicationHelper, type: :helper do
       expect(helper.accepted_requests(user1, user2)).to eq true
     end
   end
-
-  describe '#my_friend?' do
-    it 'returns the users friends' do
-      Friendship.create(user_id: user1.id, friend_id: user2.id, status: true)
-      expect(helper.my_friend?(user1, user2)).to eq true
-    end
-  end
 end

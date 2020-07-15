@@ -19,10 +19,13 @@
         </div>
       </div>
       <% if current_user %>
-        <%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
-      <% else %>
-        <%= link_to 'Sign in', user_session_path %>
-      <% end %>
+      <span><%= current_user.name %> &nbsp;</span>
+      <span>
+          <%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
+        <% else %>
+          <%= link_to 'Sign in', user_session_path %>
+        <% end %>
+      </span>
     </nav>
     <% if notice.present? %>
       <div class="notice">

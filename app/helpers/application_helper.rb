@@ -26,6 +26,10 @@ module ApplicationHelper
     !!requests.first
   end
 
+  def request_status(current, user)
+    pending_requests(current, user) || pending_requests(user, current)
+  end
+
   def accepted_requests(current, user)
     friend = Friendship.where(user_id: current.id, friend_id: user.id, status: true)
     !!friend.first
@@ -35,8 +39,7 @@ module ApplicationHelper
     !accepted_requests(current, user) && pending_requests(current, user)
   end
 
-  def my_friend?(user, friend)
-    friend = Friendship.where(user_id: user, friend_id: friend, status: true)
-    !!friend.first
+  def check_friend_status(current, user)
+    accepted_requests(current, user) || accepted_requests(user, current)
   end
 end

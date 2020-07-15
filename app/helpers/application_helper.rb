@@ -16,6 +16,11 @@ module ApplicationHelper
     end
   end
 
+  def show_requests_on_userlist(user, friend)
+    friend = Friendship.where(user_id: user, friend_id: friend, status: false)
+    !!friend.first
+  end
+
   def pending_requests(current, user)
     requests = Friendship.where(user_id: current.id, friend_id: user.id)
     !!requests.first

@@ -10,6 +10,13 @@ RSpec.describe ApplicationHelper, type: :helper do
     end
   end
 
+  describe '#show_requests_on_userlist' do
+    it 'returns all requests for the current user' do
+      Friendship.create(user_id: user1.id, friend_id: user2.id, status: false)
+      expect(helper.show_requests_on_userlist(user1, user2)).to eq true
+    end
+  end
+
   describe '#pending_requests' do
     it 'returns pending requests' do
       Friendship.create(user_id: user1.id, friend_id: user2.id)

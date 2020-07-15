@@ -12,7 +12,20 @@
         </span>
         <% end %>
         <span><%= "You are friends!" if accepted_requests(current_user, user) %></span>
-          <span><%= "Your friend request is pending!" if request_alert(current_user, user) %></span>
+        <% if request_alert(current_user, user) %>
+          <span>Your friend request is pending!</span>
+        <% end %>
+        <div>
+          <% if show_requests_on_userlist(user, current_user) %>
+          <span><%= user.name %> wants to be your friend: </span>
+               <span>
+                <%= link_to 'Accept', friendship_path(user, user_id: user.id, friend_id: current_user.id), method: :put, class: 'frnd-btn' %>
+              </span>
+              <span>
+                  <%= link_to 'Ignore', friendship_path(user, user_id: user.id, friend_id: current_user.id), method: :delete, class: 'ignore-btn' %>
+              </span>
+          <% end %>
+        </div
       </li>
     <% end %>
   </ul>

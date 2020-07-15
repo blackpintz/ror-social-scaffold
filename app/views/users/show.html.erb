@@ -1,5 +1,16 @@
 <section class="user-section">
   <h2><%= "Name: #{@user.name}." %></h2>
+  <% if show_requests_on_userlist(@user, current_user) %>
+  <div>
+    <p>Your request from <%= @user.name %> is pending.</p>
+       <span>
+        <%= link_to 'Accept', friendship_path(@user, user_id: @user.id, friend_id: current_user.id), method: :put, class: 'frnd-btn' %>
+      </span>
+      <span>
+          <%= link_to 'Ignore', friendship_path(@user, user_id: @user.id, friend_id: current_user.id), method: :delete, class: 'ignore-btn' %>
+      </span>
+  </div>
+  <% end %>
   <article class="timeline">
     <h3>Recent posts:</h3>
     <ul class="posts">

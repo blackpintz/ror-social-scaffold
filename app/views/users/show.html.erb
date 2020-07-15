@@ -40,7 +40,7 @@
     <h4><%= @user.name %>'s friends:</h4>
     <ul>
     <% @users.each do |user| %>
-    <% if accepted_requests(@user, user) %>
+    <% if check_friend_status(@user, user) %>
     <li><%= user.name %></li>
     <% end %>
     <% end %>

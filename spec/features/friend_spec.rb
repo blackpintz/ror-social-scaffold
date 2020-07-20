@@ -14,7 +14,7 @@ feature 'Friend actions', type: :feature do
 
     scenario 'add a new friend' do
       click_on 'Add Alex'
-      expect(page).to have_content('Your friend request is pending!')
+      expect(page).to have_content('Your friend request has been sent.')
       expect(current_path).to eq('/users')
     end
   end

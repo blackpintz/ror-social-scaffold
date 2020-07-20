@@ -1,5 +1,7 @@
 # add the linters you want stickler to use for this project
 linters:
+  config: 'stylelintrc.json'
+    
 
 # add the files here you want to be ignored by stylelint
 files:

@@ -11,7 +11,7 @@ class User < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :friendships
   has_many :friends, through: :friendships
-  has_many :requests_sent, -> { where(status: false)}, class_name: 'Friendship'
+  has_many :requests_sent, -> { where(status: false) }, class_name: 'Friendship'
   has_many :friend_requests, through: :requests_sent, source: :friend
   has_many :requests_accepted, -> { where(status: true) }, class_name: 'Friendship'
   has_many :accepted_requests, through: :requests_accepted, source: :friend

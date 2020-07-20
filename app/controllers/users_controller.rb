@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_user,  only: [:show]
+  before_action :set_user, only: [:show]
 
   def index
     @users = User.all
@@ -11,14 +11,14 @@ class UsersController < ApplicationController
     @posts = @user.posts.ordered_by_most_recent
     show_requests
   end
-  
+
   private
-  
+
   def set_user
     @user = User.find(params[:id])
   end
-  
+
   def show_requests
-    @show_requests ||= Friendship.where(friend: @user, status: false) 
+    @show_requests ||= Friendship.where(friend: @user, status: false)
   end
 end

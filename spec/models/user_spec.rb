@@ -19,17 +19,17 @@ RSpec.describe User, type: :model do
     it { should have_many(:requests_accepted).conditions(status: true).class_name('Friendship') }
     it { should have_many(:accepted_requests).through(:requests_accepted).source(:friend) }
     it do
-      should have_many(:received_accepted_requests).
-      conditions(status: true).
-      class_name('Friendship').
-      with_foreign_key('friend_id')
+      should have_many(:received_accepted_requests)
+        .conditions(status: true)
+        .class_name('Friendship')
+        .with_foreign_key('friend_id')
     end
     it { should have_many(:received_requests).through(:received_accepted_requests).source(:user) }
     it do
-      should have_many(:received_pending_requests).
-      conditions(status: false).
-      class_name('Friendship').
-      with_foreign_key('friend_id')
+      should have_many(:received_pending_requests)
+        .conditions(status: false)
+        .class_name('Friendship')
+        .with_foreign_key('friend_id')
     end
     it { should have_many(:pending_requests).through(:received_pending_requests).source(:user) }
   end

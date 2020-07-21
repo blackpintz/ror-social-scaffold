@@ -89,4 +89,36 @@ module ApplicationHelper
   def post_errors(post)
     render 'posts/error_msg_posts' if post.errors.full_messages.any?
   end
+
+  def name_tag
+    if current_user
+      content_tag(:span) do
+        current_user.name
+      end
+    end
+  end
+
+  def sign_in_out_btn
+    if current_user
+      content_tag(:span) do
+        link_to('Sign out', destroy_user_session_path, method: :delete)
+      end
+    else
+      content_tag(:span) do
+        link_to(link_to('Sign in', user_session_path))
+      end
+    end
+  end
+
+  def notice_alert_msg
+    if notice.present?
+      content_tag(:div, class: 'notice') do
+        content_tag(:p, notice)
+      end
+    elsif alert.present?
+      content_tag(:div, class: 'alert') do
+        content_tag(:p, alert)
+      end
+    end
+  end
 end

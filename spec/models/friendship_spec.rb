@@ -17,4 +17,17 @@ RSpec.describe Friendship, type: :model do
       end
     end
   end
+
+  describe 'validations' do
+    describe '.check_status' do
+      before(:example) do
+        Friendship.create(user_id: user3.id, friend_id: user2.id)
+      end
+      it 'checks where a friendship or friend request exists' do
+        friend3 = Friendship.new(user_id: user3.id, friend_id: user2.id)
+        friend3.valid?
+        friend3.errors.full_messages.should include('Friendship status Your friendship request is pending!')
+      end
+    end
+  end
 end

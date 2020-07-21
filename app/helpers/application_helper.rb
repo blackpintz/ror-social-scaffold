@@ -85,4 +85,8 @@ module ApplicationHelper
   def posts_visibility(user)
     render @posts if user == current_user || we_friends?(current_user, user)
   end
+
+  def post_errors(post)
+    render 'posts/error_msg_posts' if post.errors.full_messages.any?
+  end
 end

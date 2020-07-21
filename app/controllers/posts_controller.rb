@@ -20,7 +20,7 @@ class PostsController < ApplicationController
   private
 
   def timeline_posts
-    @timeline_posts ||= Post.where(user: current_user).or(Post.where(user: current_user.accepted_requests)).or(Post.where(user: current_user.received_requests)).ordered_by_most_recent
+    @timeline_posts ||= Post.visible_posts(current_user).ordered_by_most_recent
   end
 
   def post_params

@@ -6,6 +6,14 @@
         <span class="profile-link">
           <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
         </span>
+        <span><%= add_friend_btn(user) %></span>
+        <span><%= friend_msg(current_user,user) %></span>
+          <span><%= request_alert_msg(user) %></span>
+        <div>
+          <span><%= confirmation_msg(user) %></span>
+          <span><%= accept_button(user) %></span>
+          <span><%= ignore_button(user) %></span>
+        </div>
       </li>
     <% end %>
   </ul>

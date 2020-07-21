@@ -1,0 +1,7 @@
+<p><%= friend.user.name %> wants to be your friend.</p>
+      <span>
+          <%= link_to 'Accept', friendship_path(@user, user_id: friend.user.id, friend_id: friend.friend.id), method: :put, class: 'frnd-btn' %>
+      </span>
+      <span>
+         <%= link_to 'Ignore', friendship_path(@user, user_id: friend.user.id, friend_id: friend.friend.id), method: :delete, class: 'ignore-btn' %>
+      </span>

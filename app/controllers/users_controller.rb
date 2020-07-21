@@ -19,6 +19,6 @@ class UsersController < ApplicationController
   end
 
   def show_requests
-    @show_requests ||= Friendship.where(friend: @user, status: false)
+    @show_requests ||= Friendship.showRequests(@user)
   end
 end

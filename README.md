@@ -6,7 +6,12 @@
 This project was improving and adding a few functionalities to the already exisiting Stay In Touch social media app. 
 You can find the original project repo [here](https://github.com/microverseinc/ror-social-scaffold) 
 
+## Original look of the users' list page
+
 ![Original look of the users' list page](images/user-list-page.png)
+
+## Original look of a user's show page
+
 ![Original look of a user's show page](images/user-show-page.png)
 
 ## Functionalities add/improved:
@@ -15,7 +20,12 @@ You can find the original project repo [here](https://github.com/microverseinc/r
 - The user is able to accept or reject a friendship request.
 - The user is able to see posts created only by them and their friends.
 
+## Final look of the users's list page
+
 ![Final look of the users' list page](images/user-list-page2.png)
+
+## Final look of a user's show page
+
 ![Final look of a user's show page](images/user-show-page2.png)
 
 [Live demo link](https://limitless-reaches-23856.herokuapp.com/users/sign_in)

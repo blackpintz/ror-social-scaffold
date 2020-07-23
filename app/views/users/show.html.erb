@@ -1,9 +1,27 @@
 <section class="user-section">
-  <h2><%= "Name: #{@user.name}" %></h2>
+  <h2><%= "Name: #{@user.name}." %></h2>
+  <div>
+    <p><%=confirmation_msg(@user) %></p>
+     <span><%= accept_button(@user) %></span>
+     <span><%= ignore_button(@user) %></span>
+  </div>
+  <span><%= add_friend_btn(@user) %></span>
   <article class="timeline">
     <h3>Recent posts:</h3>
     <ul class="posts">
-      <%= render @posts %>
+      <%= posts_visibility(@user) %>
     </ul>
   </article>
+  <div>
+    <h3>Friend Requests: </h3>
+    <%= requests_visibility(@user) %>
+  </div>
+  <div>
+    <h4><%= @user.name %>'s friends:</h4>
+    <ul>
+    <% @users.each do |user| %>
+    <li><%= display_friends(@user, user)%></li>
+    <% end %>
+    </ul>
+  </div>
 </section>
